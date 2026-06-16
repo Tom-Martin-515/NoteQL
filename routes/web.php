@@ -23,4 +23,8 @@ Route::get('/guest-notes', [GuestNoteController::class, 'index'])->name('guest-n
 Route::post('/guest-notes', [GuestNoteController::class, 'store'])->name('guest-notes.store');
 Route::delete('/guest-notes/{id}', [GuestNoteController::class, 'destroy'])->name('guest-notes.destroy');
 
+// Priority Update Route
+Route::post('/guest-notes/{id}/priority', [GuestNotesController::class, 'updatePriority'])
+    ->name('guest-notes.priority');
+
 require __DIR__.'/auth.php';

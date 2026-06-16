@@ -13,8 +13,9 @@
 @endif
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    <div class="alert alert-success d-flex align-items-center">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <span>{{ session('success') }}</span>
     </div>
 @endif
 
@@ -27,7 +28,10 @@
         <label class="form-label">Note Content</label>
         <textarea name="note" class="form-control" rows="3" required></textarea>
     </div>
-    <button class="btn btn-primary">Add Note</button>
+    <button class="btn btn-primary">
+        <i class="bi bi-plus-circle me-1"></i>
+        Add Note
+    </button>
 </form>
 
 {{-- Empty State --}}
@@ -44,19 +48,38 @@
         <div class="col-md-4 mb-3 note-card">
             <div class="card shadow-sm border-0 h-100">
                 <div class="card-body d-flex flex-column">
-                    <p class="flex-grow-1 text-muted">{{ Str::limit($note['content'], 150) }}</p>
 
-                    <div class="d-flex justify-content-between align-items-center mt-3">
+                    {{-- Note content --}}
+                    <p class="flex-grow-1 text-muted">
+                        {{ Str::limit($note['content'], 150) }}
+                    </p>
+
+                    {{-- Priority stars --}}
+                    <div class="d-flex align-items-center mb-2">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <form action="{{ route('guest-notes.priority', $note['id']) }}" method="POST" class="me-1">
+                                @csrf
+                                <input type="hidden" name="priority" value="{{ $i }}">
+                                <button class="btn btn-link p-0 m-0">
+                                    <i class="bi {{ $note['priority'] >= $i ? 'bi-star-fill text-warning' : 'bi-star' }}"></i>
+                                </button>
+                            </form>
+                        @endfor
+                    </div>
+
+                    {{-- Footer row --}}
+                    <div class="d-flex justify-content-between align-items-center mt-auto">
                         <small class="text-secondary">Guest Note</small>
 
                         <form action="{{ route('guest-notes.destroy', $note['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-outline-danger">
-                                Delete
+                                <i class="bi bi-trash"></i>
                             </button>
                         </form>
                     </div>
+
                 </div>
             </div>
         </div>
