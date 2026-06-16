@@ -31,7 +31,8 @@ class GuestNoteController extends Controller
 
         $request->session()->put('guest_notes', $notes);
 
-        return back();
+        // Flash a success message to the session
+        return back()->with('success', 'Note added successfully.');
     }
 
     public function destroy(Request $request, $id)
