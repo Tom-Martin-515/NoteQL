@@ -1,3 +1,18 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.note-card {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
