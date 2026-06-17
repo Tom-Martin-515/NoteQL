@@ -4,6 +4,53 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --bg-color: #ffffff;
+    --text-color: #212529;
+    --card-bg: #ffffff;
+    --sidebar-bg: #f8f9fa;
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e9ecef;
+    --card-bg: #1e1e1e;
+    --sidebar-bg: #1a1a1a;
+}
+
+/* Dark mode form controls */
+[data-theme="dark"] textarea,
+[data-theme="dark"] input,
+[data-theme="dark"] select {
+    background-color: #2a2a2a !important;
+    color: var(--text-color) !important;
+    border-color: #444 !important;
+}
+
+[data-theme="dark"] textarea::placeholder,
+[data-theme="dark"] input::placeholder {
+    color: #888 !important;
+}
+
+
+
+textarea, input, select {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg) !important;
+}
+
+.card {
+    background-color: var(--card-bg) !important;
+}
+
 .note-card {
     opacity: 0;
     transform: translateY(10px);

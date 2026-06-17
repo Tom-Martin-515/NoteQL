@@ -17,10 +17,15 @@
             <div class="p-3 d-flex justify-content-between align-items-center">
                 <h4 class="mb-0">NoteQL</h4>
 
-                {{-- Collapse button (desktop) --}}
-                <button class="btn btn-sm btn-light d-none d-md-inline sidebar-collapse">
-                    <i class="bi bi-chevron-left"></i>
-                </button>
+                <div class="d-flex align-items-center">
+                    <button class="btn btn-sm btn-light d-none d-md-inline sidebar-collapse me-2">
+                        <i class="bi bi-chevron-left"></i>
+                    </button>
+
+                    <button class="btn btn-sm btn-light theme-toggle">
+                        <i class="bi bi-moon-fill"></i>
+                    </button>
+                </div>
             </div>
 
             <ul class="nav flex-column px-2">
