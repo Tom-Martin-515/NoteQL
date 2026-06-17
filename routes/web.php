@@ -5,7 +5,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('guest-notes.index');
 });
 
 Route::get('/dashboard', function () {
@@ -24,7 +24,7 @@ Route::post('/guest-notes', [GuestNoteController::class, 'store'])->name('guest-
 Route::delete('/guest-notes/{id}', [GuestNoteController::class, 'destroy'])->name('guest-notes.destroy');
 
 // Priority Update Route
-Route::post('/guest-notes/{id}/priority', [GuestNotesController::class, 'updatePriority'])
+Route::post('/guest-notes/{id}/priority', [GuestNoteController::class, 'updatePriority'])
     ->name('guest-notes.priority');
 
 require __DIR__.'/auth.php';
