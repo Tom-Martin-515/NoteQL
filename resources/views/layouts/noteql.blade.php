@@ -31,7 +31,8 @@
             <ul class="nav flex-column px-2">
 
                 <li class="nav-item mb-2">
-                    <a href="{{ route('guest-notes.index') }}" class="nav-link d-flex align-items-center">
+                    <a href="{{ route('guest-notes.index') }}"
+                       class="nav-link d-flex align-items-center {{ request()->routeIs('guest-notes.index') ? 'active' : '' }}">
                         <i class="bi bi-journal-text me-2"></i>
                         <span>Guest Notes</span>
                     </a>

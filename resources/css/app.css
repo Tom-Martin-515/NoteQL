@@ -65,6 +65,41 @@
     color: #666 !important;
 }
 
+/* Active link styling */
+.sidebar .nav-link.active {
+    background-color: rgba(0, 0, 0, 0.08);
+    font-weight: 600;
+    border-left: 3px solid #0d6efd;
+}
+
+/* Dark mode active link */
+[data-theme="dark"] .sidebar .nav-link.active {
+    background-color: #2a2a2a;
+    border-left: 3px solid #6a9edf;
+}
+
+/* Sidebar Polish */
+.sidebar .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* collapsed‑sidebar behaviour */
+.sidebar.collapsed {
+    width: 70px !important;
+}
+
+.sidebar.collapsed h4 {
+    display: none;
+}
+
+.sidebar.collapsed .nav-link span {
+    display: none;
+}
+
+[data-theme="dark"] .sidebar .nav-link:hover {
+    background-color: #2a2a2a;
+}
+
 /* Dark Mode Button Polish */
 [data-theme="dark"] .btn-primary {
     background-color: #3a6ea5 !important;
