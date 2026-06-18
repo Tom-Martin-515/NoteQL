@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoteQL</title>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -54,19 +55,17 @@
             </ul>
         </nav>
 
-        {{-- Main content --}}
+        {{-- Main Content --}}
         <div class="flex-grow-1 p-4">
 
-            {{-- Mobile toggle --}}
+            {{-- Mobile burger toggle --}}
             <button class="btn btn-outline-secondary sidebar-toggle d-md-none mb-3">
                 <i class="bi bi-list"></i>
             </button>
 
             @yield('content')
-
         </div>
 
     </div>
-
 </body>
 </html>
