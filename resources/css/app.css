@@ -4,6 +4,30 @@
 @tailwind components;
 @tailwind utilities;
 
+/* --------------------------------------------------
+   GLOBAL GRADIENT BACKGROUND (LIGHT + DARK MODE)
+-------------------------------------------------- */
+:root {
+    --background-gradient: linear-gradient(
+        135deg,
+        #f8f9fa 0%,
+        #e9ecef 50%,
+        #ffffff 100%
+    );
+}
+
+[data-theme="dark"] {
+    --background-gradient: linear-gradient(
+        135deg,
+        #1a1a1a 0%,
+        #111 50%,
+        #000 100%
+    );
+}
+
+/* --------------------------------------------------
+   EXISTING THEME VARIABLES
+-------------------------------------------------- */
 :root {
     --bg-color: #ffffff;
     --text-color: #212529;
@@ -18,7 +42,9 @@
     --sidebar-bg: #1a1a1a;
 }
 
-/* Dark mode form controls */
+/* --------------------------------------------------
+   DARK MODE FORM CONTROLS
+-------------------------------------------------- */
 [data-theme="dark"] textarea,
 [data-theme="dark"] input,
 [data-theme="dark"] select {
@@ -32,14 +58,18 @@
     color: #888 !important;
 }
 
-/* Dark mode cards */
+/* --------------------------------------------------
+   DARK MODE CARDS
+-------------------------------------------------- */
 [data-theme="dark"] .card {
     background-color: var(--card-bg) !important;
     border-color: #333 !important;
     box-shadow: 0 2px 6px rgba(0,0,0,0.4);
 }
 
-/* Alert Polish for Dark Mode */
+/* --------------------------------------------------
+   ALERTS (DARK MODE)
+-------------------------------------------------- */
 [data-theme="dark"] .alert-success {
     background-color: #1f3d1f !important;
     border-color: #2f5f2f !important;
@@ -52,7 +82,9 @@
     color: #e3b6b6 !important;
 }
 
-/* Sidebar Polish for Dark Mode */
+/* --------------------------------------------------
+   SIDEBAR (DARK MODE)
+-------------------------------------------------- */
 [data-theme="dark"] .sidebar .nav-link {
     color: var(--text-color) !important;
 }
@@ -65,117 +97,34 @@
     color: #666 !important;
 }
 
-/* Active link styling */
+/* --------------------------------------------------
+   ACTIVE LINK STYLING
+-------------------------------------------------- */
 .sidebar .nav-link.active {
     background-color: rgba(0, 0, 0, 0.08);
     font-weight: 600;
     border-left: 3px solid #0d6efd;
 }
 
-/* Dark mode active link */
 [data-theme="dark"] .sidebar .nav-link.active {
     background-color: #2a2a2a;
     border-left: 3px solid #6a9edf;
 }
 
-/* Sidebar Polish */
+/* --------------------------------------------------
+   SIDEBAR HOVER
+-------------------------------------------------- */
 .sidebar .nav-link:hover {
     background-color: rgba(0, 0, 0, 0.05);
-}
-
-/* collapsed‑sidebar behaviour */
-.sidebar.collapsed {
-    width: 70px !important;
-}
-
-.sidebar.collapsed h4 {
-    display: none;
-}
-
-.sidebar.collapsed .nav-link span {
-    display: none;
 }
 
 [data-theme="dark"] .sidebar .nav-link:hover {
     background-color: #2a2a2a;
 }
 
-/* Dark Mode Button Polish */
-[data-theme="dark"] .btn-primary {
-    background-color: #3a6ea5 !important;
-    border-color: #3a6ea5 !important;
-}
-
-[data-theme="dark"] .btn-outline-danger {
-    color: #ff6b6b !important;
-    border-color: #ff6b6b !important;
-}
-
-[data-theme="dark"] .btn-outline-danger:hover {
-    background-color: #ff6b6b !important;
-    color: #121212 !important;
-}
-
-/* Input Focus Ring For Dark Mode */
-[data-theme="dark"] textarea:focus,
-[data-theme="dark"] input:focus,
-[data-theme="dark"] select:focus {
-    border-color: #6a9edf !important;
-    box-shadow: 0 0 0 0.2rem rgba(106, 158, 223, 0.25) !important;
-}
-
-/* Focus Ring adjustment for dark mode */
-[data-theme="dark"] .btn:focus,
-[data-theme="dark"] .btn:active,
-[data-theme="dark"] .btn:focus-visible {
-    box-shadow: 0 0 0 0.15rem rgba(255,255,255,0.15) !important;
-    outline: none !important;
-} 
-
-/* Dark Mode Divider Lines */
-[data-theme="dark"] .border-end {
-    border-color: #333 !important;
-}
-
-textarea, input, select {
-    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
-}
-
-body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-}
-
-.sidebar {
-    background-color: var(--sidebar-bg) !important;
-}
-
-.card {
-    background-color: var(--card-bg) !important;
-}
-
-.note-card {
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeIn 0.3s ease-out forwards;
-}
-
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Fix Tailwind overriding Bootstrap flex utilities */
-.d-flex {
-    display: flex !important;
-}
-
-.flex-grow-1 {
-    flex-grow: 1 !important;
-}
-
+/* --------------------------------------------------
+   COLLAPSED SIDEBAR
+-------------------------------------------------- */
 .sidebar.collapsed {
     width: 70px !important;
 }
@@ -197,10 +146,103 @@ body {
     margin-right: 0;
 }
 
-/* Smooth Global Transisions */
+/* --------------------------------------------------
+   BUTTONS (DARK MODE)
+-------------------------------------------------- */
+[data-theme="dark"] .btn-primary {
+    background-color: #3a6ea5 !important;
+    border-color: #3a6ea5 !important;
+}
+
+[data-theme="dark"] .btn-outline-danger {
+    color: #ff6b6b !important;
+    border-color: #ff6b6b !important;
+}
+
+[data-theme="dark"] .btn-outline-danger:hover {
+    background-color: #ff6b6b !important;
+    color: #121212 !important;
+}
+
+/* --------------------------------------------------
+   INPUT FOCUS RING (DARK MODE)
+-------------------------------------------------- */
+[data-theme="dark"] textarea:focus,
+[data-theme="dark"] input:focus,
+[data-theme="dark"] select:focus {
+    border-color: #6a9edf !important;
+    box-shadow: 0 0 0 0.2rem rgba(106, 158, 223, 0.25) !important;
+}
+
+[data-theme="dark"] .btn:focus,
+[data-theme="dark"] .btn:active,
+[data-theme="dark"] .btn:focus-visible {
+    box-shadow: 0 0 0 0.15rem rgba(255,255,255,0.15) !important;
+    outline: none !important;
+}
+
+/* --------------------------------------------------
+   DIVIDER LINES (DARK MODE)
+-------------------------------------------------- */
+[data-theme="dark"] .border-end {
+    border-color: #333 !important;
+}
+
+/* --------------------------------------------------
+   TRANSITIONS
+-------------------------------------------------- */
+textarea, input, select {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
 body, .card, .sidebar, textarea, input, select, .alert, .btn {
     transition: background-color 0.25s ease,
                 color 0.25s ease,
                 border-color 0.25s ease,
                 box-shadow 0.25s ease;
+}
+
+/* --------------------------------------------------
+   APPLY GRADIENT BACKGROUND
+-------------------------------------------------- */
+body {
+    background: var(--background-gradient);
+    background-attachment: fixed;
+    background-size: cover;
+    color: var(--text-color);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg) !important;
+}
+
+.card {
+    background-color: var(--card-bg) !important;
+}
+
+/* --------------------------------------------------
+   NOTE CARD ANIMATION
+-------------------------------------------------- */
+.note-card {
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------
+   FIX TAILWIND OVERRIDES
+-------------------------------------------------- */
+.d-flex {
+    display: flex !important;
+}
+
+.flex-grow-1 {
+    flex-grow: 1 !important;
 }
