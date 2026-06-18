@@ -22,24 +22,17 @@
 
 <h1 class="mb-4">Guest Notes</h1>
 
-{{-- Create Note Form --}}
-<form action="{{ route('guest-notes.store') }}" method="POST" class="mb-4">
-    @csrf
-    <div class="mb-3">
-        <label class="form-label">Note Content</label>
-        <textarea name="note" class="form-control" rows="3" required></textarea>
-    </div>
-    <button class="btn btn-primary">
-        <i class="bi bi-plus-circle me-1"></i>
-            Add Note
-    </button>
-</form>
+{{-- Create Note Button --}}
+<button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createNoteModal">
+    <i class="bi bi-plus-circle me-1"></i>
+    Create Note
+</button>
 
 {{-- Empty State --}}
 @if (count($notes) === 0)
     <div class="text-center text-muted py-5">
         <i class="bi bi-journal-text" style="font-size: 3rem;"></i>
-        <p class="mt-3">No notes yet. Add your first one above.</p>
+        <p class="mt-3">No notes yet. Create your first one above.</p>
     </div>
 @endif
 
@@ -67,6 +60,35 @@
             </div>
         </div>
     @endforeach
+</div>
+
+{{-- Create Note Modal --}}
+<div class="modal fade" id="createNoteModal" tabindex="-1" aria-labelledby="createNoteModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <form action="{{ route('guest-notes.store') }}" method="POST">
+                @csrf
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createNoteModalLabel">Create Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <label class="form-label">Note Content</label>
+                    <textarea name="note" class="form-control" rows="4" required></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Save Note</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
 </div>
 
 @endsection
