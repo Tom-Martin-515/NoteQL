@@ -7,14 +7,16 @@
 @section('content')
 
 @if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
+    <div class="alert alert-danger d-flex align-items-center">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <span>{{ session('error') }}</span>
     </div>
 @endif
 
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
+    <div class="alert alert-success d-flex align-items-center">
+        <i class="bi bi-check-circle-fill me-2"></i>
+        <span>{{ session('success') }}</span>
     </div>
 @endif
 
@@ -27,7 +29,10 @@
         <label class="form-label">Note Content</label>
         <textarea name="note" class="form-control" rows="3" required></textarea>
     </div>
-    <button class="btn btn-primary">Add Note</button>
+    <button class="btn btn-primary">
+        <i class="bi bi-plus-circle me-1"></i>
+            Add Note
+    </button>
 </form>
 
 {{-- Empty State --}}
@@ -52,7 +57,8 @@
                         <form action="{{ route('guest-notes.destroy', $note['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-outline-danger">
+                            <button class="btn btn-sm btn-outline-danger d-flex align-items-center">
+                                <i class="bi bi-trash me-1"></i>
                                 Delete
                             </button>
                         </form>
