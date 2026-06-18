@@ -7,8 +7,9 @@
 @section('content')
 
 @if (session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
+    <div class="alert alert-danger d-flex align-items-center">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <span>{{ session('error') }}</span>
     </div>
 @endif
 
@@ -30,7 +31,7 @@
     </div>
     <button class="btn btn-primary">
         <i class="bi bi-plus-circle me-1"></i>
-        Add Note
+            Add Note
     </button>
 </form>
 
@@ -74,8 +75,9 @@
                         <form action="{{ route('guest-notes.destroy', $note['id']) }}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-outline-danger">
-                                <i class="bi bi-trash"></i>
+                            <button class="btn btn-sm btn-outline-danger d-flex align-items-center">
+                                <i class="bi bi-trash me-1"></i>
+                                Delete
                             </button>
                         </form>
                     </div>
