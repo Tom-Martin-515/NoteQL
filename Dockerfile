@@ -37,23 +37,16 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
 # ---------------------------------------------------------
-# Create .env and generate APP_KEY manually
-# (avoids artisan boot issues during Docker build)
+# Set Apache DocumentRoot to /public
 # ---------------------------------------------------------
-RUN cp .env.example .env && \
-    echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
+    sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
 
 # ---------------------------------------------------------
 # Set correct permissions
 # ---------------------------------------------------------
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
-# ---------------------------------------------------------
-# Set Apache DocumentRoot to /public
-# ---------------------------------------------------------
-RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
-    sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
-    
 # ---------------------------------------------------------
 # Expose port 80 (Apache default)
 # ---------------------------------------------------------
