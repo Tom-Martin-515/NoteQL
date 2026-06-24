@@ -33,6 +33,9 @@ WORKDIR /var/www/html
 # Composer install (production)
 # ---------------------------------------------------------
 ENV COMPOSER_MEMORY_LIMIT=-1
+
+RUN ls -la && ls -la /var/www/html && php -v && composer --version || true
+
 RUN composer install --no-dev --optimize-autoloader -vvv
 
 # ---------------------------------------------------------
