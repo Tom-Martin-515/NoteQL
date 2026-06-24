@@ -49,6 +49,12 @@ RUN cp .env.example .env && \
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # ---------------------------------------------------------
+# Set Apache DocumentRoot to /public
+# ---------------------------------------------------------
+RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
+    sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
+    
+# ---------------------------------------------------------
 # Expose port 80 (Apache default)
 # ---------------------------------------------------------
 EXPOSE 80
