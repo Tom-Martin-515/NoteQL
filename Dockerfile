@@ -33,7 +33,7 @@ WORKDIR /var/www/html
 # Composer install (production)
 # ---------------------------------------------------------
 ENV COMPOSER_MEMORY_LIMIT=-1
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install --no-dev --optimize-autoloader -vvv
 
 # ---------------------------------------------------------
 # Build Vite assets
