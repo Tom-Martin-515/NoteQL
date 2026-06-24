@@ -8,7 +8,7 @@ FROM php:8.2-apache
 # ---------------------------------------------------------
 RUN apt-get update && apt-get install -y \
     git curl zip unzip libpng-dev libonig-dev libxml2-dev \
-    npm && \
+    openssl npm && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Enable Apache mod_rewrite (Laravel needs this)
@@ -37,9 +37,11 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
 # ---------------------------------------------------------
-# Generate APP_KEY automatically (no shell needed)
+# Create .env and generate APP_KEY manually
+# (avoids artisan boot issues during Docker build)
 # ---------------------------------------------------------
-RUN php artisan key:generate --force
+RUN cp .env.example .env && \
+    echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
 
 # ---------------------------------------------------------
 # Set correct permissions
