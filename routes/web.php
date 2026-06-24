@@ -4,7 +4,7 @@ use App\Http\Controllers\GuestNoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [GuestNotesController::class, 'index']);
+Route::get('/', [GuestNoteController::class, 'index']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');
