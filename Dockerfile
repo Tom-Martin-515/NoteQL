@@ -1,19 +1,18 @@
-# Force rebuild
-
 # ---------------------------------------------------------
 # Base image: PHP 8.2 with Apache
 # ---------------------------------------------------------
 FROM php:8.2-apache
 
 # ---------------------------------------------------------
-# Install system dependencies
+# Install system dependencies + PHP extensions
 # ---------------------------------------------------------
 RUN apt-get update && apt-get install -y \
-    git curl zip unzip libpng-dev libonig-dev libxml2-dev \
-    openssl npm && \
+    git curl zip unzip libpng-dev libonig-dev libxml2-dev libzip-dev \
+    npm && \
+    docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Enable Apache mod_rewrite (Laravel needs this)
+# Enable Apache mod_rewrite
 RUN a2enmod rewrite
 
 # ---------------------------------------------------------
@@ -26,21 +25,22 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 # Copy project files
 # ---------------------------------------------------------
 COPY . /var/www/html
+
+# Set working directory
 WORKDIR /var/www/html
 
 # ---------------------------------------------------------
-# Install PHP dependencies
+# Composer install (production)
 # ---------------------------------------------------------
+ENV COMPOSER_MEMORY_LIMIT=-1
 RUN composer install --no-dev --optimize-autoloader
 
 # ---------------------------------------------------------
-# Install Node dependencies + build Vite assets
+# Build Vite assets
 # ---------------------------------------------------------
 RUN npm install && npm run build
 
-# ---------------------------------------------------------
-# Ensure Vite build output is present in final image
-# ---------------------------------------------------------
+# Verify Vite output exists
 RUN ls -la public && ls -la public/build || echo "⚠️ Vite build folder missing"
 
 # ---------------------------------------------------------
@@ -50,12 +50,12 @@ RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available
     sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/apache2.conf
 
 # ---------------------------------------------------------
-# Set correct permissions
+# Permissions
 # ---------------------------------------------------------
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache
 
 # ---------------------------------------------------------
-# Expose port 80 (Apache default)
+# Expose port 80
 # ---------------------------------------------------------
 EXPOSE 80
 
