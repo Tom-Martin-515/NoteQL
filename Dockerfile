@@ -39,6 +39,11 @@ RUN composer install --no-dev --optimize-autoloader
 RUN npm install && npm run build
 
 # ---------------------------------------------------------
+# Ensure Vite build output is present in final image
+# ---------------------------------------------------------
+RUN ls -la public && ls -la public/build || echo "⚠️ Vite build folder missing"
+
+# ---------------------------------------------------------
 # Set Apache DocumentRoot to /public
 # ---------------------------------------------------------
 RUN sed -i 's|/var/www/html|/var/www/html/public|g' /etc/apache2/sites-available/000-default.conf && \
