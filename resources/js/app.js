@@ -1,5 +1,6 @@
 console.log("APP JS LOADED");
 
+import '../css/ui.css';
 
 import './bootstrap';
 
@@ -58,3 +59,38 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+// ===============================
+// Dark Mode Toggle (UI-V2)
+// ===============================
+
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Always apply saved preference, even if toggle isn't present
+    const saved = localStorage.getItem('noteql-dark-mode');
+    if (saved === 'on') {
+        document.documentElement.classList.add('dark-mode');
+    }
+
+    // Only handle toggle logic if the toggle exists on this page
+    const toggle = document.getElementById('darkModeToggle');
+    if (!toggle) return;
+
+    // Set toggle state based on saved preference
+    if (saved === 'on') {
+        toggle.checked = true;
+    }
+
+    // Toggle handler
+    toggle.addEventListener('change', () => {
+        if (toggle.checked) {
+            document.documentElement.classList.add('dark-mode');
+            localStorage.setItem('noteql-dark-mode', 'on');
+        } else {
+            document.documentElement.classList.remove('dark-mode');
+            localStorage.setItem('noteql-dark-mode', 'off');
+        }
+    });
+
+});
+

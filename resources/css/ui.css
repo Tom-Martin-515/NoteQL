@@ -1,0 +1,179 @@
+/* =========================================
+   UI-V2 Theme Tokens
+   ========================================= */
+
+:root {
+    /* Colors */
+    --ui-bg: #f8f9fa;
+    --ui-bg-dark: #1e1e1e;
+    --ui-text: #212529;
+    --ui-text-muted: #6c757d;
+    --ui-border: #dee2e6;
+
+    /* Spacing scale */
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+
+    /* Radius */
+    --ui-radius: 8px;
+
+    /* Shadows */
+    --ui-shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+    --ui-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --ui-shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+
+    /* Transitions */
+    --ui-transition: 0.25s ease;
+}
+
+footer {
+    padding: var(--space-3) var(--space-4);
+}
+
+/* =========================================
+   Utility Classes
+   ========================================= */
+
+.ui-card {
+    border-radius: var(--ui-radius);
+    box-shadow: var(--ui-shadow);
+}
+
+.ui-section {
+    padding: var(--space-4) var(--space-3);
+}
+
+.ui-fade-in {
+    animation: uiFadeIn 0.3s ease forwards;
+}
+
+@keyframes uiFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Dark Mode
+   ========================================= */
+
+.dark-mode {
+    --ui-bg: #121212;
+    --ui-text: #ffffff;
+    --ui-text-muted: #b0b0b0;
+    --ui-border: #2a2a2a;
+    --ui-shadow: 0 2px 8px rgba(255,255,255,0.05);
+}
+
+/* Page background + base text */
+.dark-mode body {
+    background-color: var(--ui-bg) !important;
+    color: var(--ui-text) !important;
+}
+
+/* Sidebar */
+.dark-mode .sidebar {
+    background-color: #1a1a1a !important;
+    border-right-color: var(--ui-border) !important;
+}
+
+/* Header */
+.dark-mode header {
+    background-color: #1a1a1a !important;
+    border-bottom-color: var(--ui-border) !important;
+}
+
+/* Navigation links */
+.dark-mode .nav-link {
+    color: var(--ui-text-muted) !important;
+}
+
+.dark-mode .nav-link.active {
+    background-color: #2a2a2a !important;
+    color: var(--ui-text) !important;
+}
+
+/* Cards (notes, etc.) */
+.dark-mode .card {
+    background-color: #1e1e1e !important;
+    border-color: var(--ui-border) !important;
+}
+
+/* Ensure note text is white */
+.dark-mode .card .card-body,
+.dark-mode .card-text,
+.dark-mode .note-content {
+    color: #ffffff !important;
+}
+
+/* Modals */
+.dark-mode .modal-content {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: var(--ui-border) !important;
+}
+
+.dark-mode .modal-header,
+.dark-mode .modal-footer {
+    border-color: var(--ui-border) !important;
+}
+
+/* Main content area */
+.dark-mode main {
+    background-color: var(--ui-bg) !important;
+    color: var(--ui-text) !important;
+}
+
+.dark-mode .container-fluid {
+    background-color: var(--ui-bg) !important;
+    color: var(--ui-text) !important;
+}
+
+/* Content sections */
+.dark-mode .ui-section {
+    background-color: #1a1a1a !important;
+    border-radius: var(--ui-radius);
+    box-shadow: var(--ui-shadow);
+}
+
+/* Footer */
+.dark-mode footer {
+    background-color: #1a1a1a !important;
+    color: #ffffff !important;
+    border-top-color: var(--ui-border) !important;
+}
+
+/* Form controls in dark mode (global) */
+.dark-mode .form-control {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: var(--ui-border) !important;
+}
+
+/* Textarea specifically (modals + anywhere) */
+.dark-mode textarea.form-control {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: var(--ui-border) !important;
+}
+
+/* Inputs in modals */
+.dark-mode .modal-content input.form-control {
+    background-color: #2a2a2a !important;
+    color: #ffffff !important;
+    border-color: var(--ui-border) !important;
+}
+
+/* =========================================
+   Dark Mode – Force Note Text to White
+   ========================================= */
+
+.dark-mode .card .card-body,
+.dark-mode .card .card-title,
+.dark-mode .card .card-text,
+.dark-mode .card .note-content {
+    color: #ffffff !important;
+}
+

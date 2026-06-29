@@ -21,4 +21,10 @@ Route::get('/guest-notes', [GuestNoteController::class, 'index'])->name('guest-n
 Route::post('/guest-notes', [GuestNoteController::class, 'store'])->name('guest-notes.store');
 Route::delete('/guest-notes/{id}', [GuestNoteController::class, 'destroy'])->name('guest-notes.destroy');
 
+// Settings Route
+Route::get('/settings', function () {
+    return view('settings.index');
+})->name('settings.index');
+
+
 require __DIR__.'/auth.php';

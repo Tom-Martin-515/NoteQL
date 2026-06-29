@@ -1,4 +1,6 @@
-@extends('layouts.noteql')
+@extends('layouts.ui.app')
+
+@section('page-title', 'Guest Notes')
 
 @php
     use Illuminate\Support\Str;
@@ -19,8 +21,6 @@
         <span>{{ session('success') }}</span>
     </div>
 @endif
-
-<h1 class="mb-4">Guest Notes</h1>
 
 {{-- Create Note Button --}}
 <button class="btn btn-primary mb-4" data-bs-toggle="modal" data-bs-target="#createNoteModal">
