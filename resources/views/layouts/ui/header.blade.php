@@ -12,12 +12,6 @@
         <button class="btn btn-outline-secondary d-md-none me-2 sidebar-toggle">
             <i class="bi bi-list"></i>
         </button>
-
-        {{-- Placeholder for future header actions --}}
-        <button class="btn btn-light disabled">
-            <i class="bi bi-three-dots"></i>
-        </button>
-
     </div>
 
 </header>
