@@ -1,5 +1,7 @@
 @extends('layouts.ui.app')
 
+@section('page-title', 'Guest Notes')
+
 @php
     use Illuminate\Support\Str;
 @endphp
