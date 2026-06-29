@@ -177,3 +177,11 @@ footer {
     color: #ffffff !important;
 }
 
+/* =========================================
+   Dark Mode — Force ALL Card Text to White
+   ========================================= */
+
+.dark-mode .card,
+.dark-mode .card * {
+    color: #ffffff !important;
+}
