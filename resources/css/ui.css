@@ -1,0 +1,52 @@
+/* =========================================
+   UI-V2 Theme Tokens
+   ========================================= */
+
+:root {
+    /* Colors */
+    --ui-bg: #f8f9fa;
+    --ui-bg-dark: #1e1e1e;
+    --ui-text: #212529;
+    --ui-text-muted: #6c757d;
+    --ui-border: #dee2e6;
+
+    /* Spacing scale */
+    --space-1: .25rem;
+    --space-2: .5rem;
+    --space-3: 1rem;
+    --space-4: 1.5rem;
+    --space-5: 2rem;
+
+    /* Radius */
+    --ui-radius: 8px;
+
+    /* Shadows */
+    --ui-shadow-sm: 0 1px 4px rgba(0,0,0,0.06);
+    --ui-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    --ui-shadow-lg: 0 4px 16px rgba(0,0,0,0.12);
+
+    /* Transitions */
+    --ui-transition: 0.25s ease;
+}
+
+/* =========================================
+   Utility Classes
+   ========================================= */
+
+.ui-card {
+    border-radius: var(--ui-radius);
+    box-shadow: var(--ui-shadow);
+}
+
+.ui-section {
+    padding: var(--space-4) var(--space-3);
+}
+
+.ui-fade-in {
+    animation: uiFadeIn 0.3s ease forwards;
+}
+
+@keyframes uiFadeIn {
+    from { opacity: 0; transform: translateY(4px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

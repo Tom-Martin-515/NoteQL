@@ -32,7 +32,8 @@
         </li>
 
         <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center disabled">
+            <a href="{{ route('settings.index') }}"
+                class="nav-link d-flex align-items-center {{ request()->routeIs('settings.index') ? 'active' : '' }}">
                 <i class="bi bi-gear me-2"></i>
                 <span>Settings</span>
             </a>
