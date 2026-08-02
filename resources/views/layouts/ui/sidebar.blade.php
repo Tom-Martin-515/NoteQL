@@ -12,20 +12,25 @@
 
     <ul class="nav flex-column px-2">
 
+        <!-- Notes (formerly Guest Notes) -->
         <li class="nav-item mb-2">
             <a href="{{ route('guest-notes.index') }}"
                class="nav-link d-flex align-items-center {{ request()->routeIs('guest-notes.index') ? 'active' : '' }}">
                 <i class="bi bi-journal-text me-2"></i>
-                <span>Guest Notes</span>
+                <span>Notes</span>
             </a>
         </li>
 
+        <!-- User Notes (only visible when logged in) -->
+        @auth
         <li class="nav-item mb-2">
-            <a class="nav-link d-flex align-items-center disabled">
+            <a href="{{ route('user-notes.index') }}"
+               class="nav-link d-flex align-items-center {{ request()->routeIs('user-notes.index') ? 'active' : '' }}">
                 <i class="bi bi-person-lines-fill me-2"></i>
                 <span>User Notes</span>
             </a>
         </li>
+        @endauth
 
         <li class="nav-item mb-2">
             <a href="{{ route('settings.index') }}"
@@ -37,3 +42,4 @@
 
     </ul>
 </nav>
+
